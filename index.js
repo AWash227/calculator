@@ -61,6 +61,30 @@ function getOperatorInput(){
         });
     });
 }
+function getDeleteInput(){
+    console.log("Delete Button is operational");
+    const deleteBtn = document.querySelector(".delete");
+    deleteBtn.addEventListener('mousedown', (e) => {
+        if(userInputArray.length == 1 && userInputArray[0] == 0){
+            return;
+        }
+        else{
+            userInputArray.pop(); 
+            console.log("Popped last array value.");
+            reloadCalcScreen();
+        }
+    });
+}
+
+function getClearInput(){
+    console.log("Clear Button is operational");
+    const clearBtn = document.querySelector(".clear");
+    clearBtn.addEventListener('mousedown', (e) => {
+        userInputArray = [0];
+        console.log("Cleared the CalcTextScreen");
+        reloadCalcScreen();
+    })
+}
 
 function convertArrayToInt(inputarray){
     let answer = "";
@@ -74,5 +98,7 @@ function convertArrayToInt(inputarray){
 window.addEventListener("load", function(){
     getNumeralInput();
     getOperatorInput();
+    getDeleteInput();
+    getClearInput();
     reloadCalcScreen();
 });
